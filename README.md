@@ -1,5 +1,4 @@
 # CinemaAppClient
-Client for CinemaApp
 
 Client for [CinemaApp](https://github.com/EugeneShalli/CinemaApp)
 
