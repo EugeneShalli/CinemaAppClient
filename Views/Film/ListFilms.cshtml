@@ -1,0 +1,42 @@
+@model IEnumerable<Film>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-row justify-content-between mb-4">
+  <span class="d-inline"><h2>Films</h2></span>
+    @Html.ActionLink("Add Film", "AddFilm", "Film", "",new { @class="btn btn-primary", role="button"})
+</div>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Language</th>
+            <th scope="col">Country</th>
+        </tr>
+        </thead>
+        <tbody>
+    
+        @foreach (var film in this.Model)
+        {
+        <a href="/Film/InfoFilm/@film.Id">
+            <tr onclick="location.href ='/Film/InfoFilm/@film.Id'">
+
+                <th scope="row">@film.Id</th>
+                <td>@film.Title</td>
+                <td>@film.Genre</td>
+                <td>@film.Language</td>
+                <td>@film.Country</td>
+
+            </tr>
+        </a>
+        }
+        </tbody>
+    </table>
+</div>

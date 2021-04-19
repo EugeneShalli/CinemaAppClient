@@ -1,0 +1,30 @@
+@model IEnumerable<LoyaltyCard>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Add Visitor</h2>
+<form method="post" action="/Visitor/Put">
+    <div class="form-group">
+        <label for="FirstName">First name <small class="text-danger"> (requied)</small></label>
+        <input type="text" name="FirstName" class="form-control" id="FirstName" aria-describedby="emailHelp" required>
+        
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last name <small class="text-danger"> (requied)</small></label>
+    <input type="text" name="LastName" class="form-control" id="LastName" required>
+    </div>
+
+    <div class="form-group">
+            <label for="LoyaltyCardSelect">LoyaltyCard <small class="text-danger"> (requied)</small></label>
+            <select class="form-control" id="LoyaltyCardSelect" name="LoyaltyCardId" required>
+                @foreach (var loyaltycard in this.Model)
+                {
+                    <option value="@loyaltycard.Id">@loyaltycard.Class</option>
+                }
+            </select>
+        </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

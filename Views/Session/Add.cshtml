@@ -1,0 +1,95 @@
+@model IEnumerable<Film>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+
+<h2>Add Session</h2>
+<form method="post" action="/Session/Put">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap 4 DatePicker</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    </head>
+    
+    @* <div class="row"> *@
+    @*       <div class='col-sm-6'> *@
+    @*          <div class="form-group"> *@
+    @*             <div class='input-group date' id='datetimepicker1'> *@
+    @*                <input type='text' class="form-control" /> *@
+    @*                <span class="input-group-addon"> *@
+    @*                <span class="glyphicon glyphicon-calendar"></span> *@
+    @*                </span> *@
+    @*             </div> *@
+    @*          </div> *@
+    @*       </div> *@
+    @*       <script type="text/javascript"> *@
+    @*          $(function () { *@
+    @*              $('#datetimepicker1').datetimepicker(); *@
+    @*          }); *@
+    @*       </script> *@
+    @* </div> *@
+
+    <div class="form-group pmd-textfield pmd-textfield-floating-label">
+    	<label class="control-label" for="Date">Select Date and Time</label>
+        <input type="datetime" name="Date" id="Date" class="form-control" />
+        <script>
+            $('#Date').datetimepicker({
+                uiLibrary: 'bootstrap4'
+            });
+        </script> 
+    </div>
+
+    
+    @* <div class="md-form mx-5 my-5"> *@
+    @*         <label for="Date">Choose date <small class="text-danger"> (requied)</small></label> *@
+    @*         <input type="date" name="Date" id="Date" class="form-control"> *@
+    @*         <script> *@
+    @*              $('#datetimepicker').datetimepicker({ *@
+    @*                      uiLibrary: 'bootstrap4' *@
+    @*              }); *@
+    @*         </script>        *@
+    @* </div> *@
+    @* *@
+    @* <div class="md-form mx-5 my-5"> *@
+    @*     <label for="Date">Choose date <small class="text-danger"> (requied)</small></label> *@
+    @*     <input type="date" name="Date" id="Date" class="form-control"> *@
+    @*         <script> *@
+    @*              $('#datepicker').datepicker({ *@
+    @*                  uiLibrary: 'bootstrap4' *@
+    @*              }); *@
+    @*         </script>        *@
+    @* </div> *@
+
+    @* <div class="md-form mx-5 my-5"> *@
+    @*     <label for="Time">Choose your time <small class="text-danger"> (requied)</small></label> *@
+    @*     <input type="time" name="Time" id="Time" class="form-control"> *@
+    @* </div> *@
+
+    @* <div class="form-group"> *@
+    @*     <label for="Initials">Initials <small class="text-danger"> (requied)</small></label> *@
+    @*     <input type="text" name="Initials" class="form-control" id="Initials" aria-describedby="emailHelp" required> *@
+    @*     $1$ <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #1# *@
+    @* </div> *@
+    <div class="form-group">
+        <label for="Room">Room <small class="text-danger"> (requied)</small></label>
+        <input type="text" name="Room" class="form-control" id="Room" required>
+    </div>
+    <div class="form-group">
+                <label for="FilmSelect">Select Film<small class="text-danger"> (requied)</small></label>
+                <select class="form-control" id="FilmSelect" name="FilmID" required>
+                    @foreach (var film in this.Model)
+                    {
+                        <option value="@film.Id">@film.Title</option>
+                    }
+                </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

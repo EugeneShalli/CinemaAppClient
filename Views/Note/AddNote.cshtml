@@ -1,0 +1,40 @@
+@model HelpObjects
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>New Note</h2>
+
+<form method="post" action="/Note/Put">
+    <div class="form-group">
+        <label for="VisitorSelect">Visitor <small class="text-danger"> (requied)</small></label>
+        <select class="form-control" id="VisitorSelect" name="VisitorId" required>
+            @foreach (var visitor in this.Model.Visitors)
+            {
+                <option value="@visitor.Id">@visitor.FirstName @visitor.LastName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="SessionSelect">Session <small class="text-danger"> (requied)</small></label>
+        <select class="form-control" id="SessionSelect" name="SessionId" required>
+            @foreach (var session in this.Model.Sessions)
+            {
+                <option value="@session.Id">@session.FilmId - @session.Date</option>
+            }
+        </select>
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="FilmSelect">Film <small class="text-danger"> (requied)</small></label>
+        <select class="form-control" id="FilmSelect" name="FilmId" required>
+            @foreach (var film in this.Model.Films)
+            {
+                <option value="@film.Id">@film.Id - @film.Title</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

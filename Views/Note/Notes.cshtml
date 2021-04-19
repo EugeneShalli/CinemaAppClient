@@ -1,0 +1,37 @@
+@model IEnumerable<Note>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-row justify-content-between mb-4">
+    <span class="d-inline"><h2>Notes</h2></span>
+    @Html.ActionLink("Add Note", "AddNote", "Note", "",new { @class="btn btn-primary", role="button"})
+</div>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Visitor ID</th>
+            <th scope="col">Session ID</th>
+            <th scope="col">Film ID</th>
+            <th scope="col">Added at</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var note in this.Model)
+        {
+            <tr>
+                <th scope="row">@note.Id</th>
+                <td>@note.VisitorId</td>
+                <td>@note.SessionId</td>
+                <td>@note.FilmId</td>
+                <td>@note.DateVisit.ToString()</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
